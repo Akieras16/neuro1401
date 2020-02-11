@@ -9,7 +9,13 @@ def import_image_as_greyscale(fp):
     return image
 
 def normalize(im, gamma, sigma):
-    return gamma *(im**2 /(sigma**2 + np.sum(im**2)))
+    return gamma *(im**1.5 /(sigma**1.5 + np.sum(im**1.5)))
+
+# plot result of normalize on array
+arr = np.asarray([1, 3, 5, 7, 9])
+print(normalize(arr, 10, .01))
+plt.plot(arr, arr)
+plt.plot(arr, normalize(arr, 100, .01))
 
 testim = import_image_as_greyscale('data/monkey.jpg')
 #cv2.imshow(testim)
